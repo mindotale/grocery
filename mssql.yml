@@ -1,16 +1,10 @@
 version: '3.8'
 
-name: mssql-test
-
-volumes:
-  mssql-data:
-  mssql-backup:
-  mssql-logs:
+name: grocery-mssql
 
 services:
   mssql:
-    image: "mcr.microsoft.com/mssql/server:2022-CU9-ubuntu-20.04"
-    container_name: mssql
+    image: "mcr.microsoft.com/mssql/server:2022-CU11-ubuntu-22.04"
     environment:
       ACCEPT_EULA: Y
       MSSQL_SA_PASSWORD: "Password!"
@@ -27,6 +21,7 @@ services:
       timeout: 10s
       retries: 5
     volumes:
-      - mssql-data:/var/opt/mssql
-      - mssql-backup:/var/opt/mssql/backup
-      - mssql-logs:/var/opt/mssql/log
+      - .volumes/mssql-data:/var/opt/mssql/data
+      - .volumes/mssql-backup:/var/opt/mssql/backup
+      - .volumes/mssql-logs:/var/opt/mssql/log
+      - .volumes/mssql-secrets:/var/opt/mssql/secrets
