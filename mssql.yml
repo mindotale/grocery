@@ -1,0 +1,32 @@
+version: '3.8'
+
+name: mssql-test
+
+volumes:
+  mssql-data:
+  mssql-backup:
+  mssql-logs:
+
+services:
+  mssql:
+    image: "mcr.microsoft.com/mssql/server:2022-CU9-ubuntu-20.04"
+    container_name: mssql
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: "Password!"
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    user: root
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Password!", "-Q", "SELECT 1 || exit 1"]
+      start_period: 15s
+      start_interval: 10s
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - mssql-data:/var/opt/mssql
+      - mssql-backup:/var/opt/mssql/backup
+      - mssql-logs:/var/opt/mssql/log
