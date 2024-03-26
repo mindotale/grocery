@@ -1,0 +1,49 @@
+{
+    "facts": [
+        {
+            "name": "",
+            "description": "",
+            "dimensions": [
+                {
+                    "name": "",
+                    "dimensionName": ""
+                }
+            ],
+            "degenerateDimensions": [
+                {
+                    "name": "",
+                    "description": ""
+                }
+            ],
+            "metrics": [
+                {
+                    "name": "",
+                    "description": ""
+                }
+            ]
+        }
+    ],
+    "dimensions": [
+        {
+            "name": "",
+            "description": "",
+            "attributes": [
+                {
+                    "name": "",
+                    "description": ""
+                }
+            ],
+            "dimensions": [
+                {
+                    "name": "",
+                    "dimensionName": ""
+                }
+            ]
+        }
+    ],
+    "transformations": [
+        {}
+    ],
+    "databaseName": "",
+    "connectionString": ""
+}
